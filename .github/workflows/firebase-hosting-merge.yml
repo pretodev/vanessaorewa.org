@@ -7,15 +7,16 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Configurando Ruby
         uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
         with:
