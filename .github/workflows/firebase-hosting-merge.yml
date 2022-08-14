@@ -10,13 +10,14 @@ on:
 
 jobs:
   build_and_deploy:
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
+        ruby-version: ['3.0']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Configurando Ruby
         uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
         with:
@@ -26,11 +27,11 @@ jobs:
         run: bundle install
       - name: Gerando site
         run: bundle exec jekyll build
-      - name: Compilando para firebase
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VANESSAOREWA_BE104 }}'
-          channelId: live
-          projectId: vanessaorewa-be104
+      # - name: Compilando para firebase
+      # - run: npm ci && npm run build
+      # - uses: FirebaseExtended/action-hosting-deploy@v0
+      #   with:
+      #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
+      #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VANESSAOREWA_BE104 }}'
+      #     channelId: live
+      #     projectId: vanessaorewa-be104
